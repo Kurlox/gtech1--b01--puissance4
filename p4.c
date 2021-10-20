@@ -30,5 +30,15 @@ int main(void) {
   printf("Welcome to Puissance4!\n");
   print();
 
+  int Cchoisie = 0;
+
+  
+  printf("Choississez la colonne dans laquelle mettre votre jeton : ");
+  scanf("%d", &Cchoisie);
+  printf("Vous avec choisi la colonne %d", Cchoisie );
+  
+
+
   return 0;
+
 }

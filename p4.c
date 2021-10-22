@@ -14,7 +14,7 @@ int init(void) {
   }
 }
 int print(void) {
-  printf("-------------\n");
+  printf("\n-------------\n");
   for(int l=0;l<NBL;l++) {
     for(int c=0;c<NBC;c++) {
       printf("%c ", tab[l][c]);
@@ -30,15 +30,41 @@ int main(void) {
   printf("Welcome to Puissance4!\n");
   print();
 
+  int Full = 0;
+  int Won = 0;
+  int p = 0;
   int Cchoisie = 0;
 
-  
-  printf("Choississez la colonne dans laquelle mettre votre jeton : ");
-  scanf("%d", &Cchoisie);
-  printf("Vous avec choisi la colonne %d", Cchoisie );
-  
+  while (!Full && !Won) {
+    printf("Quel joueur commence, 1 ou 2 ?");
+    scanf("%d", &p);
+    printf("\nJoueur %d,", p );
 
+    if (p = 1) {
+      printf(" choississez la colonne dans laquelle mettre votre jeton : ");
+      scanf("%d", &Cchoisie);
+      printf("\nVous avec choisi la colonne %d", Cchoisie );
+      for(int l=0;l<NBL;l) {
+        for(int c=0;c<NBC;c) {
+          tab[5][Cchoisie-1] = tokens[0];
+
+        }
+      }
+    }
+
+    else {
+      printf(" choississez la colonne dans laquelle mettre votre jeton : ");
+      scanf("%d", &Cchoisie);
+      printf("\nVous avec choisi la colonne %d", Cchoisie );
+      for(int l=0;l<NBL;l) {
+        for(int c=0;c<NBC;c) {
+          tab[l][Cchoisie-1] = tokens[1];
+
+
+        }
+      }
+    }
+  }
 
   return 0;
-
 }

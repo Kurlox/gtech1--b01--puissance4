@@ -32,39 +32,28 @@ int main(void) {
 
   int Full = 0;
   int Won = 0;
-  int p = 0;
+  int player = 0;
   int Cchoisie = 0;
 
+
+//  printf("Quel joueur commence, 1 ou 2 ?");
+//  scanf("%d", &player);
+ // printf("\nJoueur %d,", player );
+
   while (!Full && !Won) {
-    printf("Quel joueur commence, 1 ou 2 ?");
-    scanf("%d", &p);
-    printf("\nJoueur %d,", p );
-
-    if (p = 1) {
-      printf(" choississez la colonne dans laquelle mettre votre jeton : ");
-      scanf("%d", &Cchoisie);
-      printf("\nVous avec choisi la colonne %d", Cchoisie );
-      for(int l=0;l<NBL;l) {
-        for(int c=0;c<NBC;c) {
-          tab[5][Cchoisie-1] = tokens[0];
-
-        }
+    printf("Tour du joueur %d (%c)> ", player, tokens[player]);
+    //  printf(" choisissez la colonne dans laquelle mettre votre jeton : ");
+    int ret = scanf("%d", &Cchoisie);
+    if(ret != 1) {
+      printf("Mauvaise saisie!\n");
+      void flushstdin() {
+        int c;
+        while((c = getchar()) != '\n' && c != EOF);
       }
+      continue;
     }
 
-    else {
-      printf(" choississez la colonne dans laquelle mettre votre jeton : ");
-      scanf("%d", &Cchoisie);
-      printf("\nVous avec choisi la colonne %d", Cchoisie );
-      for(int l=0;l<NBL;l) {
-        for(int c=0;c<NBC;c) {
-          tab[l][Cchoisie-1] = tokens[1];
-
-
-        }
-      }
-    }
+    player = !player;
   }
-
   return 0;
 }

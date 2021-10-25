@@ -5,6 +5,10 @@
 #define NBC 7
 char tab[NBL][NBC];
 char tokens[] = "ox";
+void flushstdin() {
+  int c;
+  while((c = getchar()) != '\n' && c != EOF);
+}
 
 int init(void) {
   for(int l=0;l<NBL;l++) {
@@ -24,11 +28,21 @@ int print(void) {
   printf("-------------\n");
   printf("1 2 3 4 5 6 7\n");
 }
+void jeton(int colonne, int player) {
+  for(int l=NBL;l>=0;l--) {
+    if(tab[l][colonne] == '.') {
+      tab[l][colonne] = tokens[player];
+      break;
+    }
+    else {
+      continue;
+    }
+  }
+}
 
-int main(void) {
+void main(void) {
   init();
   printf("Welcome to Puissance4!\n");
-  print();
 
   int Full = 0;
   int Won = 0;
@@ -36,24 +50,24 @@ int main(void) {
   int Cchoisie = 0;
 
 
-//  printf("Quel joueur commence, 1 ou 2 ?");
-//  scanf("%d", &player);
- // printf("\nJoueur %d,", player );
-
   while (!Full && !Won) {
+    print();
     printf("Tour du joueur %d (%c)> ", player, tokens[player]);
-    //  printf(" choisissez la colonne dans laquelle mettre votre jeton : ");
     int ret = scanf("%d", &Cchoisie);
     if(ret != 1) {
       printf("Mauvaise saisie!\n");
-      void flushstdin() {
-        int c;
-        while((c = getchar()) != '\n' && c != EOF);
-      }
+      flushstdin();
+   }
+   else {
+     Cchoisie--;
+     if(Cchoisie < 0 || Cchoisie  >= 7) {
+      printf("Mauvaise saisie");
       continue;
-    }
-
-    player = !player;
+     }
+     else {
+     jeton(Cchoisie, player);
+     player = !player;
+     }
+   }
   }
-  return 0;
 }

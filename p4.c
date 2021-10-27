@@ -10,7 +10,7 @@ void flushstdin() {
   while((c = getchar()) != '\n' && c != EOF);
 }
 
-  // onction création du tableau
+  // Création du tableau
 
 int init(void) {
   for(int l=0;l<NBL;l++) {
@@ -19,7 +19,7 @@ int init(void) {
     }
   }
 }
-  // Fonction d'affichage du tableau
+  // Affichage tableau
 
 int print(void) {
   printf("\n-------------\n");
@@ -35,7 +35,11 @@ int print(void) {
   // Fonction mise en place des jetons
 
 int jeton(int colonne, int player) {
- // for(
+ // for(tab[0][colonne]) {
+    //if(tab[0][colonne] != '.') {
+    //printf("Tableau plein, égalité");
+    //}
+  //}
 
   for(int l=NBL;l>=0;l--) {
     if(tab[l][colonne] == '.') {
@@ -59,6 +63,7 @@ int jeton(int colonne, int player) {
 void main(void) {
   init();
   printf("Welcome to Puissance4!\n");
+  printf("!! Si vous jouez dans une colonne déjà remplie, votre tour sera automatiquement passé. Fallait être attentif...\n");
 
   int Full = 0;
   int Won = 0;
@@ -73,17 +78,17 @@ void main(void) {
     if(ret != 1) {
       printf("Mauvaise saisie!\n");
       flushstdin();
-   }
-   else {
-     Cchoisie--;
-     if(Cchoisie < 0 || Cchoisie  >= 7) {
+    }
+    else {
+      Cchoisie--;
+      if(Cchoisie < 0 || Cchoisie  >= 7) {
       printf("Mauvaise saisie");
       continue;
-     }
-     else {
-     jeton(Cchoisie, player);
-     player = !player;
-     }
-   }
+    }
+    else {
+      jeton(Cchoisie, player);
+      player = !player;
+    }
+    }
   }
 }

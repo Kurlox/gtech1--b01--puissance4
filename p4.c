@@ -10,6 +10,8 @@ void flushstdin() {
   while((c = getchar()) != '\n' && c != EOF);
 }
 
+  // onction création du tableau
+
 int init(void) {
   for(int l=0;l<NBL;l++) {
     for(int c=0;c<NBC;c++) {
@@ -17,6 +19,8 @@ int init(void) {
     }
   }
 }
+  // Fonction d'affichage du tableau
+
 int print(void) {
   printf("\n-------------\n");
   for(int l=0;l<NBL;l++) {
@@ -28,18 +32,30 @@ int print(void) {
   printf("-------------\n");
   printf("1 2 3 4 5 6 7\n");
 }
-void jeton(int colonne, int player) {
+  // Fonction mise en place des jetons
+
+int jeton(int colonne, int player) {
+ // for(
+
   for(int l=NBL;l>=0;l--) {
     if(tab[l][colonne] == '.') {
       tab[l][colonne] = tokens[player];
       break;
     }
+
+    if(tab[0][colonne] != '.') {
+      printf("colonne pleine\n");
+      break;
+    }
+
     else {
       continue;
     }
   }
 }
 
+
+  // Jeu
 void main(void) {
   init();
   printf("Welcome to Puissance4!\n");
@@ -52,7 +68,7 @@ void main(void) {
 
   while (!Full && !Won) {
     print();
-    printf("Tour du joueur %d (%c)> ", player, tokens[player]);
+    printf("Tour du joueur %d (%c)> ", player+1, tokens[player]);
     int ret = scanf("%d", &Cchoisie);
     if(ret != 1) {
       printf("Mauvaise saisie!\n");
